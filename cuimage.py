@@ -32,7 +32,7 @@ img=img.convert('RGB')
 width=img.size[0]
 height=img.size[1]
 
-code='echo -e "'
+code='echo -e '
 
 for h in xrange(height):
 	prev_i=-1
@@ -56,12 +56,12 @@ for h in xrange(height):
 		
 		prev_i=color_i
 	code += '\\e[m\\n'
-code = code[:-2]+'"'
+code = code[:-2]
 
 if args.save!="":
 	f=file(args.save,'w')
 	f.write('#!/usr/bin/zsh\n')
 	f.write(code)
 else:
-	subprocess.call(code,shell=True)
+	subprocess.call(code.split(' '))
 
